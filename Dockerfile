@@ -1,7 +1,4 @@
-FROM maven:3.8.2-jdk-8
-
-WORKDIR /bezkoder-app
-COPY . .
-RUN mvn clean install
-
-CMD mvn spring-boot:run
+FROM openjdk:8
+EXPOSE 8080
+ADD target/docker-jenkins-integration-sampleapp.jar  docker-jenkins-integration-sampleapp.jar
+Entrypoint ["java","jar","/docker-jenkins-integration-sampleapp.jar"]
